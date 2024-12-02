@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中学华文词语表</title>
+  <style>
+    /* Optional: Add styles to hide elements when they are not needed */
+  /* General reset for clean styling */
+
+  .hidden {
+    display: none;
+  }
+
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5; /* Neutral background */
+  color: #3c3c3c; /* Subtle text color */
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #003d5c; /* Intellectual deep blue */
+  color: #ffffff; /* Text contrast */
+  text-align: center;
+  padding: 1.5rem 1rem; /* Slightly increased padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  flex: 1;
+  padding: 2rem 1rem; /* Ample padding for breathing space */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem; /* Larger gaps for better separation */
+}
+
+.form-section, .result-section {
+  background: #ffffff; /* Clean white sections */
+  padding: 2rem; /* Balanced padding */
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Restrict width for readability */
+  width: 100%;
+}
+
+.form-section {
+  flex: 1; /* Allow form section to grow if needed */
+}
+
+.result-section {
+  flex: 1.5; /* Result section slightly larger for content */
+}
+
+fieldset {
+  border: 1px solid #b0b0b0; /* Neutral light gray border */
+  border-radius: 6px; /* Slightly rounded corners for a modern touch */
+  padding: 1rem; /* Comfortable padding for the dropdown and labels */
+  margin-bottom: 1.5rem; /* Space between fieldsets */
+  background-color: #ffffff; /* Clean white background for focus */
+}
+
+legend {
+  font-size: 1rem; /* Match dropdown font size for consistency */
+  font-weight: bold; /* Clear emphasis on the legend text */
+  color: #3c3c3c; /* Neutral text color for readability */
+  margin-bottom: 0.5rem; /* Space below the legend */
+  padding: 0 0.5rem; /* Padding to visually offset the text */
+}
+
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.dropdown, .submit-btn {
+  width: 100%;
+  padding: 0.6rem; /* Increased padding for better interaction */
+  margin-bottom: 1.5rem; /* Balanced spacing between elements */
+  border: 1px solid #b0b0b0;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.dropdown:focus, .submit-btn:focus {
+  outline: none;
+  border-color: #00799e; /* Bright intellectual blue */
+  box-shadow: 0 0 5px rgba(0, 121, 158, 0.5);
+}
+
+.submit-btn {
+  background-color: #00799e; /* Bright intellectual blue */
+  color: #ffffff; /* Contrast */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #005973; /* Darker shade for hover */
+}
+
+.result-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.result-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.result-item {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-key {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.result-array {
+  color: #555;
+}
+
+/* Responsive Design */
+
+/* Responsive Design */
+
+/* Mobile styles (default stacking behavior for small screens) */
+main {
+  display: flex;
+  flex-direction: column; /* Stack form and result vertically */
+  align-items: center; /* Center align items */
+  padding: 2rem 1rem; /* Reduced padding for small screens */
+  gap: 1.5rem; /* Spacing between form and result sections */
+}
+
+.form-section, .result-section {
+  width: 100%; /* Full width for small screens */
+  max-width: 550px; /* Maintain consistent max-width for readability */
+}
+
+/* Tablet and small desktop styles */
+@media (min-width: 768px) {
+  .form-section, .result-section {
+    max-width: 550px;
+  }
+
+  main {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: row; /* Side-by-side layout for form and result */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem; /* Space between the form and result sections */
+  }
+
+  .form-section, .result-section {
+    max-width: none; /* Allow sections to take up available space */
+  }
+
+  .form-section {
+    flex: 1; /* Form takes up one part */
+  }
+
+  .result-section {
+    flex: 2; /* Results take up more space */
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>中学华文词语表</h1>
+  </header>
+
+  <main>
+    <section id="form-container" class="form-section">
+      <form id="wordForm">
+        <fieldset>
+          <legend>查找方式 (Fetch Type)</legend>
+          <label for="fetchType" class="input-label"></label>
+          <select id="fetchType" name="fetchType" class="dropdown">
+            <option value="">点击选择 Select a Type</option>
+            <option value="banding">科目 By Course</option>
+            <option value="level">年级 By Level</option>
+            <option value="unit">单元 By Unit</option>
+            <option value="passage">课文 By Passage</option>
+          </select>
+        </fieldset>
+
+        <div class="dropdown-container hidden" id="bandingContainer">
+          <label for="banding" class="input-label">科目 Course</label>
+          <select id="banding" name="banding" class="dropdown">
+            <option value="">点击选择 Select a Course</option>
+            <option value="G3">G3</option>
+            <option value="G2">G2</option>
+            <option value="G1">G1</option>
+            <option value="HCL">HCL</option>
+          </select>
+        </div>
+        <div class="dropdown-container hidden" id="levelContainer">
+          <label for="level" class="input-label">年级 Level</label>
+          <select id="level" name="level" class="dropdown">
+            <option value="">点击选择 Select a level</option>
+            <option value="1">中一</option>
+            <option value="2">中二</option>
+            <option value="3">中三</option>
+            <option value="4">中四</option>
+          </select>
+        </div>
+        <div class="dropdown-container hidden" id="unitContainer">
+          <label for="unit" class="input-label">单元 Unit</label>
+          <select id="unit" name="unit" class="dropdown">
+            <option value="">点击选择 Select a Unit</option>
+            <option value="单元一">单元一</option>
+            <option value="单元二">单元二</option>
+            <option value="单元三">单元三</option>
+            <option value="单元四">单元四</option>
+            <option value="单元五">单元五</option>
+            <option value="单元六">单元六</option>
+          </select>
+        </div>
+        <div class="dropdown-container hidden" id="passageContainer">
+          <label for="passage" class="input-label">课文 Passage</label>
+          <select id="passage" name="passage" class="dropdown">
+            <option value="">点击选择 Select a passage</option>
+            <option value="生活空间">生活空间</option>
+            <option value="核心">核心</option>
+            <option value="巩固">巩固</option>
+            <option value="进阶">进阶</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">查找 Fetch Words</button>
+      </form>
+    </section>
+
+    <section id="result-container" class="result-section">
+      <h2>词语表:</h2>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <script>
+    // Function to initialize visibility on page load
+    function initializeVisibility() {
+      document.getElementById("bandingContainer").classList.add("hidden");
+      document.getElementById("levelContainer").classList.add("hidden");
+      document.getElementById("unitContainer").classList.add("hidden");
+      document.getElementById("passageContainer").classList.add("hidden");
+    }
+
+    // Call the function when the page loads
+    initializeVisibility();
+
+    // Event listener for dropdown change
+    document.getElementById("fetchType").addEventListener("change", function () {
+      const fetchType = this.value;
+
+      // Hide all containers if no fetch type is selected
+      if (!fetchType) {
+        document.getElementById("bandingContainer").classList.add("hidden");
+        document.getElementById("levelContainer").classList.add("hidden");
+        document.getElementById("unitContainer").classList.add("hidden");
+        document.getElementById("passageContainer").classList.add("hidden");
+        return; // Exit the function early
+      }
+
+      // Toggle visibility of dropdowns hierarchically based on fetch type
+      document.getElementById("bandingContainer").classList.remove("hidden"); 
+      document.getElementById("levelContainer").classList.toggle("hidden", fetchType === "banding");
+      document.getElementById("unitContainer").classList.toggle(
+        "hidden",
+        fetchType !== "unit" && fetchType !== "passage"
+      );
+      document.getElementById("passageContainer").classList.toggle("hidden", fetchType !== "passage");
+    });
+
+    // Handle form submission
+    document.getElementById("wordForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const fetchType = document.getElementById("fetchType").value;
+      const params = new URLSearchParams();
+
+      // Construct query parameters hierarchically
+      if (fetchType) {
+        params.append("banding", document.getElementById("banding").value || "");
+        if (fetchType === "level" || fetchType === "unit" || fetchType === "passage") {
+          params.append("level", document.getElementById("level").value || "");
+        }
+        if (fetchType === "unit" || fetchType === "passage") {
+          params.append("unit", document.getElementById("unit").value || "");
+        }
+        if (fetchType === "passage") {
+          params.append("passage", document.getElementById("passage").value || "");
+        }
+      }
+
+      // Fetch client IP (optional, for rate limiting)
+      try {
+        const clientIP = await fetch("https://api.ipify.org?format=json").then(res => res.json()).then(data => data.ip);
+        params.append("clientIP", clientIP);
+      } catch {
+        params.append("clientIP", "unknown");
+      }
+
+      // Fetch data from backend
+      const url = `https://script.google.com/macros/s/AKfycbwwRp7bTxcf-H4parNfokCbDqnHB6w4IFNw3OSuupBjJfxq6X32he_ayvT4hqXYke6G/exec?${params.toString()}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const resultContainer = document.getElementById("result");
+        resultContainer.innerHTML = ""; // Clear previous result
+
+        if (data.groupedData) {
+          resultContainer.appendChild(renderHierarchy(data.groupedData));
+        } else {
+          resultContainer.innerText = "No words found.";
+        }
+      } catch (error) {
+        document.getElementById("result").innerText = `Error: ${error.message}`;
+      }
+    });
+
+    // Recursive function to render hierarchical data
+    function renderHierarchy(data) {
+      const container = document.createElement("ul");
+      container.classList.add("result-list"); // Add a class to the top-level container
+
+      Object.entries(data).forEach(([key, value]) => {
+        const listItem = document.createElement("li");
+        listItem.classList.add("result-item"); // Add a class to each list item
+        listItem.innerHTML = `<span class="result-key">${key}:</span>`;
+
+        if (typeof value === "object" && !Array.isArray(value)) {
+          const nestedList = renderHierarchy(value); // Recursive call for nested objects
+          listItem.appendChild(nestedList);
+        } else if (Array.isArray(value)) {
+          const arrayContent = document.createElement("span");
+          arrayContent.classList.add("result-array");
+          arrayContent.textContent = ` ${value.join(", ")}`; // Display array as a comma-separated list
+          listItem.appendChild(arrayContent);
+        }
+
+        container.appendChild(listItem);
+      });
+
+      return container;
+    }
+  </script>
+</body>
+</html>
