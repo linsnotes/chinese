@@ -1,0 +1,244 @@
+
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif; /* Sets the default font */
+}
+
+body {
+  background-color: #f5f5f5; /* Light gray background */
+  color: #3c3c3c; /* Dark gray text color */
+  line-height: 1.6; /* Increases line height for readability */
+  min-height: 100vh; /* Ensures body takes at least full viewport height */
+  display: flex;
+  flex-direction: column; /* Stacks header and main vertically */
+}
+
+/* Typography */
+h1 {
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
+}
+
+.separator {
+  color: #9e002a; /* Dark red color for the separator */
+  font-weight: bold; /* Makes the separator text bold */
+}
+
+/* Header */
+header {
+  background-color: #003d5c; /* Deep blue background */
+  color: #ffffff; /* White text color for contrast */
+  text-align: center; /* Centers the header content */
+  padding: 1rem; /* Padding around the header content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow below header */
+}
+
+/* Main Content Area */
+main {
+  flex: 1; /* Allows main to grow and fill available space */
+  padding: 2rem 1rem; /* Padding around main content */
+  display: flex;
+  flex-wrap: wrap; /* Allows content to wrap to next line if necessary */
+  justify-content: center; /* Centers content horizontally */
+  align-items: flex-start; /* Aligns items to the top */
+  gap: 1.5rem; /* Space between child elements */
+}
+
+/* Sections */
+.form-section,
+.result-section {
+  background: #ffffff; /* White background for clarity */
+  padding: 2rem; /* Padding inside sections */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 600px; /* Maximum width for readability */
+  width: 100%; /* Full width of parent container */
+}
+
+.form-section {
+  flex: 1; /* Allows form section to grow if needed */
+}
+
+.result-section {
+  flex: 1.5; /* Makes result section slightly larger for content */
+}
+
+/* Form Elements */
+form {
+  width: 100%;
+}
+
+fieldset {
+  border: 1px solid #b0b0b0; /* Light gray border */
+  border-radius: 6px; /* Rounded corners */
+  padding: 1rem; /* Padding inside fieldset */
+  margin-bottom: 2rem; /* Space below each fieldset */
+  background-color: #ffffff; /* White background */
+}
+
+legend {
+  font-size: 1rem; /* Standard font size */
+  font-weight: bold; /* Bold text */
+  color: #3c3c3c; /* Neutral text color */
+  margin-bottom: 0.5rem; /* Space below the legend */
+  padding: 0 0.5rem; /* Horizontal padding */
+}
+
+.filter-box {
+  color: #467482;
+}
+
+.search-box {
+  color: #078939;
+}
+
+.filter-legend {
+  color: #005973; /* Dark blue color */
+}
+
+.search-legend {
+  color: #078939; /* Green color */
+}
+
+.input-label {
+  display: block; /* Labels act as block elements */
+  margin-bottom: 0.5rem; /* Space below the label */
+  font-weight: bold; /* Bold text */
+  font-size: 1rem; /* Standard font size */
+}
+
+.dropdown,
+.submit-btn,
+#searchText {
+  width: 100%; /* Full width */
+  padding: 0.6rem; /* Padding inside inputs */
+  margin-bottom: 1.5rem; /* Space below inputs */
+  border: 1px solid #b0b0b0; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Standard font size */
+}
+
+.dropdown:focus,
+.submit-btn:focus,
+#searchText:focus {
+  outline: none; /* Removes default outline */
+  border-color: #00799e; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 121, 158, 0.5); /* Glow effect on focus */
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #00799e; /* Bright blue background */
+  color: #ffffff; /* White text */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.submit-btn:hover {
+  background-color: #005973; /* Darker blue on hover */
+}
+
+/* Search Message */
+#searchMessage {
+  margin-top: 0; /* Removes margin above the message */
+  padding: 0.5rem; /* Padding inside the message box */
+  border: 1px solid #078939; /* Green border for emphasis */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #ffffff; /* White background */
+  font-size: 1rem; /* Standard font size */
+  color: #3c3c3c; /* Subtle text color */
+  text-align: center; /* Centers the text */
+}
+
+#searchWord {
+  color: #9e002a; /* Dark red color */
+  font-weight: bolder; /* Extra bold text */
+}
+
+#searchWord::before {
+  content: ' “';
+}
+
+#searchWord::after {
+  content: '” ';
+}
+
+/* Result List */
+.result-list {
+  list-style: none; /* Removes bullet points */
+  padding-left: 0; /* Removes left padding */
+}
+
+.result-item {
+  margin-bottom: 1rem; /* Space below each item */
+  padding: 0.5rem; /* Padding inside each item */
+  border-bottom: 1px solid #9e0909; /* Red border at the bottom */
+}
+
+.result-key {
+  font-weight: bold; /* Bold text */
+  display: inline-block; /* Inline block for proper spacing */
+  margin-right: 0.5rem; /* Space to the right */
+}
+
+.result-array {
+  color: #555; /* Gray color for array items */
+}
+
+/* Responsive Design */
+/* Mobile Styles (Default) */
+main {
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center-aligns items */
+  padding: 2rem 1rem; /* Padding around main content */
+  gap: 1.5rem; /* Space between sections */
+}
+
+.form-section,
+.result-section {
+  width: 100%; /* Full width */
+  max-width: 550px; /* Max width for readability */
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  main {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  main {
+    flex-direction: row; /* Side-by-side layout */
+    justify-content: space-between; /* Space between sections */
+    align-items: flex-start; /* Aligns items to the top */
+    gap: 2rem; /* Increased space between sections */
+  }
+
+  .form-section,
+  .result-section {
+    max-width: none; /* Removes max-width constraint */
+  }
+
+  .form-section {
+    flex: 1; /* Form takes up one part */
+  }
+
+  .result-section {
+    flex: 2; /* Results take up two parts */
+  }
+}
