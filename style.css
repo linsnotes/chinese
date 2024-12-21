@@ -189,10 +189,10 @@ legend {
   text-decoration: underline;
 }
 
-.data-section ul {
+.data-section ol {
   list-style-type: disc;
   margin-left: 20px;
-  padding-left: 0;
+  padding-left: 20;
 }
 
 .data-section li {
@@ -200,12 +200,6 @@ legend {
   font-size: 1rem;
   color: #3c3c3c;
 }
-
-
-
-
-
-
 
 
 
