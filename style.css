@@ -190,7 +190,7 @@ legend {
 }
 
 .data-section ol {
-  list-style-type: disc;
+  list-style-type: decimal;
   margin-left: 20px;
   padding-left: 0;
 }
@@ -237,13 +237,11 @@ main {
     font-size: 1rem; /* Smaller font size for headings */
   }
 
-  .data-section ul {
-    list-style-type: disc; /* Keep bullets for structure */
+  .data-section ol {
+    list-style-type: decimal; 
     margin-left: 15px; /* Indent for clarity */
   }
 }
-
-
 
 
 /* Tablet Styles */
