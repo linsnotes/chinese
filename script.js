@@ -16,37 +16,65 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("searchText").value = "";
   }
 
-  /**
-   * Recursively renders hierarchical data into a structured HTML list.
-   * @param {Object} data - The hierarchical data to render.
-   * @returns {HTMLElement} - The HTML element representing the rendered data.
-   */
-  function renderHierarchy(data) {
-    const container = document.createElement("ul");
-    container.classList.add("result-list");
+    /**
+     * Flattens a nested object into an array of paths and values.
+     * @param {Object} obj - The nested object to flatten.
+     * @param {string} parentPath - The current path being processed.
+     * @returns {Array} - An array of flattened paths and values.
+     */
+    function flattenObject(obj, parentPath = "") {
+      let result = [];
+      for (const [key, value] of Object.entries(obj)) {
+        const currentPath = parentPath ? `${parentPath} > ${key}` : key;
 
-    Object.entries(data).forEach(([key, value]) => {
-      const listItem = document.createElement("li");
-      listItem.classList.add("result-item");
-      listItem.innerHTML = `<span class="result-key">${key}:</span>`;
-
-      if (typeof value === "object" && !Array.isArray(value)) {
-        const nestedList = renderHierarchy(value);
-        listItem.appendChild(nestedList);
-      } else if (Array.isArray(value)) {
-        const arrayContent = document.createElement("span");
-        arrayContent.classList.add("result-array");
-        arrayContent.innerHTML = value
-          .map(item => `<span class="array-item">${item}</span>`)
-          .join('<span class="separator"> | </span>');
-        listItem.appendChild(arrayContent);
+        if (Array.isArray(value)) {
+          result.push({ path: currentPath, values: value });
+        } else if (typeof value === "object" && value !== null) {
+          result = result.concat(flattenObject(value, currentPath));
+        }
       }
 
-      container.appendChild(listItem);
-    });
+      if (Object.keys(obj).length === 0) {
+        result.push({ path: parentPath, values: ["No data available"] });
+      }
 
-    return container;
-  }
+      return result;
+    }
+
+    /**
+     * Renders the flattened data into HTML elements.
+     * @param {Array} flattenedData - An array of paths and values.
+     * @returns {HTMLElement} - The container element with rendered data.
+     */
+    function renderFlattenedData(flattenedData) {
+      const container = document.createElement("div");
+
+      flattenedData.forEach(({ path, values }) => {
+        const section = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.textContent = path;
+        section.appendChild(summary);
+
+        // Values as a list
+        const list = document.createElement("ul");
+        if (values.length === 0) {
+          const listItem = document.createElement("li");
+          listItem.textContent = "No items available";
+          list.appendChild(listItem);
+        } else {
+          values.forEach(value => {
+            const listItem = document.createElement("li");
+            listItem.textContent = value;
+            list.appendChild(listItem);
+          });
+        }
+
+        section.appendChild(list);
+        container.appendChild(section);
+      });
+
+      return container;
+    }
 
   // ---- Configuration ----
 
@@ -146,7 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
           searchMessage.classList.remove("hidden");
         }
 
-        resultContainer.appendChild(renderHierarchy(data.groupedData));
+        const flattenedData = flattenObject(data.groupedData);
+        const htmlContent = renderFlattenedData(flattenedData);
+        resultContainer.appendChild(htmlContent);
       } else {
         resultContainer.innerText = "No words found.";
       }

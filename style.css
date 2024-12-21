@@ -31,11 +31,6 @@ h2 {
   display: none;
 }
 
-.separator {
-  color: #9e002a; /* Dark red color for the separator */
-  font-weight: bold; /* Makes the separator text bold */
-}
-
 /* Header */
 header {
   background-color: #003d5c; /* Deep blue background */
@@ -177,26 +172,42 @@ legend {
 }
 
 /* Result List */
-.result-list {
-  list-style: none; /* Removes bullet points */
-  padding-left: 0; /* Removes left padding */
+.data-section {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.result-item {
-  margin-bottom: 1rem; /* Space below each item */
-  padding: 0.5rem; /* Padding inside each item */
-  border-bottom: 1px solid #9e0909; /* Red border at the bottom */
+.data-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #003d5c;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.result-key {
-  font-weight: bold; /* Bold text */
-  display: inline-block; /* Inline block for proper spacing */
-  margin-right: 0.5rem; /* Space to the right */
+.data-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
 }
 
-.result-array {
-  color: #555; /* Gray color for array items */
+.data-section li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #3c3c3c;
 }
+
+
+
+
+
+
+
+
 
 /* Responsive Design */
 /* Mobile Styles (Default) */
@@ -213,10 +224,47 @@ main {
   max-width: 550px; /* Max width for readability */
 }
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center-align content */
+    padding: 1.5rem 1rem; /* Compact padding */
+    gap: 1rem; /* Reduced space between sections */
+  }
+
+  .data-section {
+    margin-bottom: 15px; /* Reduced spacing */
+    padding: 8px; /* Compact padding */
+    box-shadow: none; /* Remove shadow for a flat design */
+  }
+
+  .data-section h3 {
+    font-size: 1rem; /* Smaller font size for headings */
+  }
+
+  .data-section ul {
+    list-style-type: disc; /* Keep bullets for structure */
+    margin-left: 15px; /* Indent for clarity */
+  }
+}
+
+
+
+
 /* Tablet Styles */
 @media (min-width: 768px) {
   main {
     padding: 3rem 2rem;
+  }
+
+  .data-section {
+    margin-bottom: 20px; /* Slightly larger spacing between sections */
+    padding: 10px; /* Balanced padding for medium screens */
+  }
+
+  .data-section h3 {
+    font-size: 1.1rem; /* Slightly larger font size */
   }
 }
 
@@ -224,9 +272,9 @@ main {
 @media (min-width: 1024px) {
   main {
     flex-direction: row; /* Side-by-side layout */
-    justify-content: space-between; /* Space between sections */
-    align-items: flex-start; /* Aligns items to the top */
-    gap: 2rem; /* Increased space between sections */
+    justify-content: space-between; /* Spread sections horizontally */
+    align-items: flex-start; /* Align items to the top */
+    gap: 2rem; /* Space between sections */
   }
 
   .form-section,
@@ -234,11 +282,14 @@ main {
     max-width: none; /* Removes max-width constraint */
   }
 
-  .form-section {
-    flex: 1; /* Form takes up one part */
+  .data-section {
+    margin-bottom: 25px; /* Larger spacing for clear separation */
+    padding: 15px; /* Generous padding for readability */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   }
 
-  .result-section {
-    flex: 2; /* Results take up two parts */
+  .data-section h3 {
+    font-size: 1.2rem; /* Larger font size for headings */
   }
 }
+
