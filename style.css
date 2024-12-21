@@ -174,7 +174,7 @@ legend {
 /* Result List */
 .data-section {
   margin-bottom: 20px;
-  padding: 10px 10px 10px 30px; /* Add left padding to shift content */
+  padding: 10px 10px 10px 100px; /* Add left padding to shift content */
   border: 1px solid #d9d9d9;
   border-radius: 8px;
   background-color: #ffffff;
