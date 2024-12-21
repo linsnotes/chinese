@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         section.appendChild(summary);
 
         // Values as a list
-        const list = document.createElement("ul");
+        const list = document.createElement("ol");
         if (values.length === 0) {
           const listItem = document.createElement("li");
           listItem.textContent = "No items available";
