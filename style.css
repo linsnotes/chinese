@@ -181,6 +181,55 @@ legend {
 }
 
 
+
+/* Spinner */
+
+#spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e0e0e0; /* Light gray */
+  border-top: 5px solid #00799e; /* Blue for the spinning effect */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 1rem; /* Add space between spinner and text */
+  font-size: 1.2rem;
+  color: #3c3c3c;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#spinner-container.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
 /* Result Section Styles */
 
 /* Container for the Result Section */
