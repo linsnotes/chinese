@@ -23,16 +23,16 @@
 
           <label for="category" class="input-label">类别 Word or Phrase</label>
           <select id="category" name="category" class="dropdown">
-            <option value="">点击选择 Click to Select</option>
+            <option value="">选择类别 Select the Category</option>
             <option value="词语">词语 Word</option>
             <option value="名言俗语">名言俗语 Phrase</option>
           </select>
 
           <label for="fetchType" class="input-label">筛选 Filter</label>
           <select id="fetchType" name="fetchType" class="dropdown">
-            <option value="">点击选择 Click to Select</option>
-            <option value="banding">科目 By Course</option>
-            <option value="level">年级 By Level</option>
+            <option value="">筛选方式 Filter Type</option>
+            <option value="banding">科目 By Course - (G1/G2/G3/HCL)</option>
+            <option value="level">年级 By Level - (Sec 1/2/3/4)</option>
             <option value="unit">单元 By Unit</option>
             <option value="passage">课文 By Passage</option>
           </select>
@@ -40,7 +40,7 @@
           <div class="dropdown-container hidden" id="bandingContainer">
             <label for="banding" class="input-label">科目 Course</label>
             <select id="banding" name="banding" class="dropdown">
-              <option value="">点击选择 Click to Select</option>
+              <option value="">选择科目 Select Course</option>
               <option value="G3">G3</option>
               <option value="G2">G2</option>
               <option value="G1">G1</option>
@@ -51,7 +51,7 @@
           <div class="dropdown-container hidden" id="levelContainer">
             <label for="level" class="input-label">年级 Level</label>
             <select id="level" name="level" class="dropdown">
-              <option value="">点击选择 Click to Select</option>
+              <option value="">选择年级 Select Level</option>
               <option value="中一">中一</option>
               <option value="中二">中二</option>
               <option value="中三">中三</option>
@@ -62,7 +62,7 @@
           <div class="dropdown-container hidden" id="unitContainer">
             <label for="unit" class="input-label">单元 Unit</label>
             <select id="unit" name="unit" class="dropdown">
-              <option value="">点击选择 Click to Select</option>
+              <option value="">选择单元 Select Unit</option>
               <option value="单元一">单元一</option>
               <option value="单元二">单元二</option>
               <option value="单元三">单元三</option>
@@ -75,7 +75,7 @@
           <div class="dropdown-container hidden" id="passageContainer">
             <label for="passage" class="input-label">课文 Passage</label>
             <select id="passage" name="passage" class="dropdown">
-              <option value="">点击选择 Click to Select</option>
+              <option value="">选择课文 Select Passage</option>
               <option value="生活空间">生活空间</option>
               <option value="核心">核心</option>
               <option value="巩固">巩固</option>
@@ -83,6 +83,7 @@
             </select>
           </div>
         </fieldset>
+        <button type="submit" class="submit-btn fetch">导出 Fetch</button>
 
         <fieldset class="search-box">
           <legend class="search-legend">字词句搜索 Search</legend>
@@ -91,14 +92,13 @@
         </fieldset>
 
 
-        <button type="submit" class="submit-btn">导出/搜索 Fetch/Search</button>
+        <button type="submit" class="submit-btn search">搜索 Search</button>
       </form>
     </section>
 
     <section id="result-container" class="result-section">
       <h2>词语表/搜索结果</h2>
       <div id="result">
-        <!-- Rendered results will be inserted dynamically here -->
       </div>
     </section>
   </main>
