@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Reference to the spinner container
+  const spinnerContainer = document.getElementById("spinner-container");
+
+  // Ensure the spinner is hidden on page load
+  if (!spinnerContainer.classList.contains("hidden")) {
+    spinnerContainer.classList.add("hidden");
+  }
+
+  // Function to show the spinner
+  function showSpinner() {
+    spinnerContainer.classList.remove("hidden");
+  }
+
+  // Function to hide the spinner
+  function hideSpinner() {
+    spinnerContainer.classList.add("hidden");
+  }
+
+
+
   // ---- Utility Functions ----
 
   /**
@@ -117,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("wordForm").addEventListener("submit", async function (e) {
     e.preventDefault(); // Prevent default form submission
 
+    showSpinner(); // Show the spinner at the start of the submission
+
+
+
     // Elements and variables for handling results
     const searchText = document.getElementById("searchText").value.trim();
     const searchMessage = document.getElementById("searchMessage");
@@ -182,6 +207,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       resultContainer.innerText = `Error: ${error.message}`;
+    } finally {
+      hideSpinner(); // Hide spinner
     }
   });
 
