@@ -39,6 +39,28 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow below header */
 }
 
+/* Footer */
+footer {
+  background-color: #f4f4f4; /* Light gray background */
+  padding: 20px; /* Add some space inside the footer */
+  text-align: center; /* Center the text */
+  border-top: 1px solid #ddd; /* Add a subtle border at the top */
+  font-size: 14px; /* Make the text slightly smaller */
+  color: #333; /* Dark gray text for readability */
+}
+
+footer a {
+  color: #007bff; /* Modern blue for links */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make the link text bold */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Add underline on hover for emphasis */
+  color: #0056b3; /* Darker blue on hover */
+}
+
+
 /* Main Content Area */
 main {
   flex: 1; /* Allows main to grow and fill available space */
